@@ -13,11 +13,12 @@ return results as a list
 
 sort is O(nlog(n))
 loops are O(N^2)
-space O(1) || O(N) - sorting might take extra memory in some libraries
+space O(N) - sorting might take extra memory in some libraries
+O(N^2) for results 
 
 Final: 
 Time - O(N^2)
-Space - O(1) for Kotlin
+Space - O(N^2) 
 */
 
 class Solution {
