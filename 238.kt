@@ -1,3 +1,11 @@
+/*
+The first solution is easier to follow, but the seond one uses less space
+use n as an accumulator. Update res[i] first and then update the accumulator
+this will create an array of all the products to the left of the index and then do 
+the same in reverse to multiply the products to the rigth and left together replacing 
+results[i]
+ */
+
 class Solution {
   fun productExceptSelf(nums: IntArray): IntArray {
       val n = nums.size
