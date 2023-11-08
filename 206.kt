@@ -6,6 +6,8 @@
  * class ListNode(var `val`: Int) {
  *     var next: ListNode? = null
  * }
+ * 
+ * This is a good problem to practice both two pointers/swapping and recursive solutions
  */
 class Solution {
   fun reverseList(head: ListNode?): ListNode? {
@@ -30,7 +32,7 @@ class Solution {
  *     var next: ListNode? = null
  * }
  * 
- * Recursive solution
+ * Recursive solution 
  */
 
 class Solution {
