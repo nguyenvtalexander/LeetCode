@@ -1,3 +1,10 @@
+/*
+Handling the edge cases of the beginning and start of the flowerbed 
+becomes simpler by adding a 0 to the end and beginning
+this takes up more space, but substantially improves readability and lines of 
+code
+*/
+
 class Solution {
   fun canPlaceFlowers(flowerbed: IntArray, n: Int): Boolean {
       if (flowerbed.size < 2) {
@@ -29,4 +36,23 @@ class Solution {
 
       return n <= count
   }
+}
+
+class Solution {
+    fun canPlaceFlowers(flowerbed: IntArray, n: Int): Boolean {
+        var count = 0
+        val bed = flowerbed.toMutableList()
+        bed.add(0, 0)
+        bed.add(0)
+
+        for (i in 1..bed.lastIndex - 1) {
+            if (bed[i] != 1 && bed[i - 1] != 1 && bed[i + 1] != 1) {
+                count ++
+                bed[i] = 1
+            }
+        }
+
+        println(count)
+        return count >= n
+    }
 }
