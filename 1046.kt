@@ -18,3 +18,17 @@ class Solution {
       return 0
   }
 }
+
+class Solution {
+  fun lastStoneWeight(stones: IntArray): Int {
+      val heap = PriorityQueue<Int>(Comparator.reverseOrder())
+      stones.forEach { heap.offer(it) }
+
+      while (heap.size > 1) {
+          val diff = heap.poll() - heap.poll()
+          if (diff > 0) heap.offer(diff) 
+      }
+
+      return heap.peek() ?: 0
+  }
+}
