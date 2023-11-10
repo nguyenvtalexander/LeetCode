@@ -64,3 +64,28 @@ class Solution {
       islandCheck(grid, r, c + 1)
   }
 }
+
+class Solution {
+  fun numIslands(grid: Array<CharArray>): Int {
+      var count = 0
+      for (r in grid.indices) {
+          for (c in grid[0].indices) {
+              if (grid[r][c] == '1') {
+                  dfs(grid, r, c)
+                  count ++
+              }
+          }
+      }
+      return count
+  }
+  
+  private fun dfs(grid: Array<CharArray>, r: Int, c: Int) {
+      if (grid.getOrNull(r)?.getOrNull(c) == '1') {
+          grid[r][c] = '0'
+          dfs(grid, r + 1, c)
+          dfs(grid, r - 1, c)
+          dfs(grid, r, c + 1)
+          dfs(grid, r, c - 1)
+      }
+  }
+}
