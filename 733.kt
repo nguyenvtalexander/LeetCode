@@ -48,3 +48,23 @@ class Solution {
       }
   }
 }
+
+
+class Solution {
+  fun floodFill(image: Array<IntArray>, sr: Int, sc: Int, color: Int): Array<IntArray> {
+      val visited = HashSet<Pair<Int, Int>>()
+      val key = image[sr][sc]
+      dfs (image, sr, sc, color, key, visited)
+      return image
+  }
+
+  private fun dfs(image: Array<IntArray>, r: Int, c: Int, color: Int, key: Int, visited: HashSet<Pair<Int, Int>>) {
+      if (visited.add(Pair(r,c)) && image.getOrNull(r)?.getOrNull(c) == key) {
+          image[r][c] = color
+          dfs(image, r + 1, c, color, key, visited)
+          dfs(image, r - 1, c, color, key, visited)
+          dfs(image, r, c + 1, color, key, visited)
+          dfs(image, r, c - 1, color, key, visited)
+      }
+  }
+}
