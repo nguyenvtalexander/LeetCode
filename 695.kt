@@ -19,3 +19,22 @@ class Solution {
   }
 }
 
+class Solution {
+  fun maxAreaOfIsland(grid: Array<IntArray>): Int {
+      var curMax = 0
+      for (r in grid.indices) {
+          for (c in grid[0].indices) {
+              curMax = max(findArea(grid, r, c), curMax)
+          }
+      }
+      return curMax
+  }
+
+  private fun findArea(grid: Array<IntArray>, sr: Int, sc: Int): Int {
+      if (grid.getOrNull(sr)?.getOrNull(sc) == null || grid[sr][sc] != 1) {
+          return 0
+      }
+      grid[sr][sc] = 0
+      return 1 + findArea(grid, sr + 1, sc) + findArea(grid, sr - 1, sc) +findArea(grid, sr, sc + 1) + findArea(grid, sr, sc - 1)
+  }
+}
