@@ -35,6 +35,7 @@ class Solution {
  *     var right: TreeNode? = null
  * }
  */
+
 class Solution {
     fun hasPathSum(root: TreeNode?, targetSum: Int): Boolean {
         return traverse(root, targetSum, 0)
