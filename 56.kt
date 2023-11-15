@@ -29,3 +29,23 @@ class Solution {
   return result.toTypedArray()
   }
 }
+
+class Solution {
+  fun merge(intervals: Array<IntArray>): Array<IntArray> {
+      intervals.sortBy { it[0] }
+      val results = mutableListOf<IntArray>()
+      var cur = intervals[0]
+
+      for (i in 1..intervals.lastIndex) {
+          if (intervals[i][0] <= cur[1]) {
+              cur[0] = min(cur[0], intervals[i][0])
+              cur[1] = max(cur[1], intervals[i][1])
+          } else {
+              results.add(cur)
+              cur = intervals[i]
+          }
+      }
+      results.add(cur)
+      return results.toTypedArray()
+  }
+}
