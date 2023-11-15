@@ -38,3 +38,27 @@ class Solution {
       return 1 + findArea(grid, sr + 1, sc) + findArea(grid, sr - 1, sc) +findArea(grid, sr, sc + 1) + findArea(grid, sr, sc - 1)
   }
 }
+
+class Solution {
+  fun maxAreaOfIsland(grid: Array<IntArray>): Int {
+      var max = 0
+      for (r in grid.indices) {
+          for (c in grid[0].indices) {
+              if (grid[r][c] == 1) {
+                  max = max(findArea(grid, r, c), max)
+              }
+          }
+      }
+      return max
+  }
+
+  fun findArea(grid: Array<IntArray>, r: Int, c: Int): Int {
+      val square = grid.getOrNull(r)?.getOrNull(c)
+      if (square == 0 || square == null) return 0 
+      grid[r][c] = 0
+      return  (1 + findArea(grid, r + 1, c) +
+              findArea(grid, r - 1, c) + 
+              findArea(grid, r, c + 1) + 
+              findArea(grid, r, c - 1))
+  }
+}
