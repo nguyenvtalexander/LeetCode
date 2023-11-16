@@ -60,3 +60,22 @@
       return if (leftSearch != null) leftSearch else helper(root.right, p, q)
   }
 }
+
+class Solution {
+  fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
+      if (root == null || p == null || q == null) return null
+
+      var current = root
+
+      while (current != null) {
+          if (p.`val` > current.`val` && q.`val` > current.`val`) {
+              current = current.right
+          } else if (p.`val` < current.`val` && q.`val` < current.`val`) {
+              current = current.left
+          } else {
+              return current
+          }
+      }
+      return null // LCA not found
+  }
+}
