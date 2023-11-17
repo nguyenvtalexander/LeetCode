@@ -42,3 +42,21 @@ class Solution {
       return count
   }
 }
+
+class Solution {
+  fun numOfSubarrays(arr: IntArray, k: Int, threshold: Int): Int {
+      var l = 0
+      var sum = 0
+      var count = 0
+
+      for (i in arr.indices) {
+          sum += arr[i]
+          if (i - l + 1 == k) {
+              if (sum / k >= threshold) count++
+              sum -= arr[l]
+              l++
+          }
+      }
+      return count
+  }
+}
