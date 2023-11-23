@@ -14,3 +14,14 @@ class Solution {
       return false
   }
 }
+
+class Solution {
+  fun containsNearbyDuplicate(nums: IntArray, k: Int): Boolean {
+      val window = HashSet<Int>()
+      for (i in nums.indices) {
+          if (!window.add(nums[i])) return true
+          if (window.size > k) window.remove(nums[i - k])
+      }
+      return false
+  }
+}
