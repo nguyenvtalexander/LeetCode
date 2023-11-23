@@ -15,3 +15,19 @@ class Solution {
       return maxVolume
   }
 }
+
+class Solution {
+  fun maxArea(height: IntArray): Int {
+      var l = 0
+      var r = height.lastIndex
+      var maxVolume = 0
+
+      while (l < r) {
+          val curHeight = min(height[l], height[r])
+          maxVolume = max(maxVolume, curHeight * (r - l))
+
+          if (height[l] < height[r]) l ++ else r--
+      }
+      return maxVolume
+  }
+}
