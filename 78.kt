@@ -19,3 +19,21 @@ class Solution {
       return results
   }
 }
+
+class Solution {
+  fun subsets(nums: IntArray): List<List<Int>> {
+      val res = mutableListOf<List<Int>>()
+      val sub = mutableListOf<Int>()
+
+      fun dfs(n: Int) {
+          res.add(ArrayList(sub))
+          for (i in n..nums.lastIndex) {
+              sub.add(nums[i])
+              dfs(i + 1)
+              sub.removeAt(sub.size - 1)
+          }
+      }
+      dfs(0)
+      return res
+  }
+}
