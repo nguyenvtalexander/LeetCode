@@ -39,3 +39,21 @@ class Solution {
       return res.toList()
   }
 }
+
+class Solution {
+    fun subsetsWithDup(nums: IntArray): List<List<Int>> {
+        nums.sort()
+        val res = HashSet<List<Int>>()
+        
+        fun dfs(start: Int, sub: MutableList<Int>) {
+            res.add(ArrayList(sub))
+            for (n in start..nums.lastIndex) {
+                sub.add(nums[n])
+                dfs(n + 1, sub)
+                sub.removeAt(sub.size - 1)
+            }
+        }
+        dfs(0, mutableListOf())
+        return res.toList()
+    }
+}
